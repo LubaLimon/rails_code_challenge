@@ -1,0 +1,28 @@
+= form_tag orders_path, method: :get do
+  .col-xs-2
+    = select_tag :query_field, query_field_params(params[:query_field]), class: "form-control"
+  .col-xs-8
+    = text_field_tag :query, params[:query], type: "text", class: "form-control"
+  .col-xs-2
+    = submit_tag "submit", method: :get, class: "btn btn-primary"
+
+%table.table
+  %thead
+    %th Order Number
+    %th Order State
+    %th Total
+    %th User Email
+    %th User Name
+    %th State
+    %th City
+  %tbody
+  - @orders.each do |order|
+    %tr
+      %td= link_to order.number, order_path(order.number)
+      %td= order.state
+      %td= order.total
+      %td= order.user.email
+      %td= order.user.name
+      %td= order.address.state
+      %td= order.address.city
+= will_paginate @orders

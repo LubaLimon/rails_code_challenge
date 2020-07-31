@@ -27,4 +27,10 @@ class Product < ApplicationRecord
 
   has_many :order_items,
            as: :source
+
+  scope :by_orders, ->(order_ids) do
+    joins(:order_items)
+      .where(order_items: {order_id: order_ids })
+      .group(:id)
+  end
 end

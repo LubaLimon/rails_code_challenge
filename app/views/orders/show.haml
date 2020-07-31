@@ -1,0 +1,29 @@
+%h2 Order #{@order.number} #{@order.state}
+-if @order.state != 'canceled'
+  = form_tag order_path, method: :put do
+    = submit_tag "cancel", class: "btn btn-primary"
+
+%p Primary address #{@order.address.address1}
+- if @order.address.address2
+  %p Secondary address #{@order.address.address2}
+
+User: #{@order.user.email}
+
+%h3 Payments
+- @order.payments.each do |payment|
+  Id: #{payment.id} #{payment.state}. Payment amount #{payment.amount}
+
+%h3 Items
+%table.table
+  %thead
+    %th Name
+    %th Quantity
+    %th Price
+    %th State
+  %tbody
+    - @order.order_items.each do |item|
+      %tr
+        %td= item.source.name
+        %td= item.quantity
+        %td= item.price
+        %td= item.state

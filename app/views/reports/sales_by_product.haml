@@ -1,0 +1,22 @@
+= form_tag sales_by_product_reports_path, method: :get, class: "row" do
+  .col-sm-4
+    = label_tag 'Start date'
+    = text_field_tag :start_date, params[:start_date], class: "datepicker"
+  .col-sm-4
+    = label_tag 'End date'
+    = text_field_tag :end_date, params[:end_date], class: "datepicker"
+  .col-xs-2
+    = submit_tag "submit", method: :get, class: "btn btn-primary"
+- if @products
+  %table.table
+    %thead
+      %th Product
+      %th Sold count
+      %th Revenue
+    %tbody
+      - @products.each do |product|
+        %tr
+          %td= product.name
+          %td= product.count
+          %td= product.revenue
+
