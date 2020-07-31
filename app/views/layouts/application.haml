@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %title CodeChallenge
+
+    = csrf_meta_tags
+    = csp_meta_tag
+    = tag "meta", "http-equiv" => "Accept-CH", content: "DPR, Viewport-Width, Width"
+    = tag 'meta', {"http-equiv" => "Accept-CH", content: "width=device-width, initial-scale=1.0, user-scalable=no", name: "viewport", id: "vp"}, true
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body
+    %nav.navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          =link_to root_path, class: "navbar-brand" do
+            =image_tag "logo"
+
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li{class: current_page?(controller: "orders") ? 'active' : ''}
+              =link_to orders_path do
+                Orders
+
+            %li{class: current_page?(controller: "reports") ? 'active' : ''}
+              =link_to reports_path do
+                Reports
+
+    .container-fluid{role: "main"}
+      = yield

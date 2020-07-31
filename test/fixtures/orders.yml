@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  state: MyString
+  total: 9.99
+  building_at: 2020-06-01 12:18:20
+  canceled_at: 2020-06-01 12:18:20
+  arrived_at: 2020-06-01 12:18:20
+  user: 
+  address: 
+
+two:
+  state: MyString
+  total: 9.99
+  building_at: 2020-06-01 12:18:20
+  canceled_at: 2020-06-01 12:18:20
+  arrived_at: 2020-06-01 12:18:20
+  user: 
+  address: 
